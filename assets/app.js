@@ -14,6 +14,9 @@ const jump = () => {
 		mario.classList.remove("jump");
 	}, 500);
 };
+const fast = () => {
+	pipe.classList.add("jump 2s");
+};
 
 const scoreInterval = () => {
 	count++;

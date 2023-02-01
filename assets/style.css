@@ -49,6 +49,14 @@
   right: 100%;
  }
 }
+@keyframes pipe-animation-fast {
+ from{
+  right: -150px;
+ }
+ to{
+  right: 100%;
+ }
+}
 @keyframes clouds-animation {
  from{
   right: -500px;
