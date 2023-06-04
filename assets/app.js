@@ -25,6 +25,14 @@ const scoreInterval = () => {
 
 const time = setInterval(scoreInterval, 100);
 
+let speed = 2; // velocidade inicial do pipe
+
+const fast = () => {
+	pipe.classList.add("jump");
+	pipe.style.transitionDuration = `${speed}s`; // define a duração da transição com base na velocidade atual
+	speed -= 0.1; // diminui a velocidade gradualmente
+};
+
 const loop = setInterval(() => {
 	const pipePosition = pipe.offsetLeft;
 	const marioPosition = +window
@@ -50,7 +58,11 @@ const loop = setInterval(() => {
 
 		clearInterval(loop);
 		clearInterval(time);
+	} else if (pipePosition <= 50) {
+		// chama a função fast quando o pipe atinge uma posição específica
+		fast();
 	}
 }, 10);
 
 addEventListener("keydown", jump);
+addEventListener("touchstart", jump);
