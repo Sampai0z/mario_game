@@ -75,6 +75,6 @@ const checkGameOver = setInterval(() => {
 		setTimeout(() => {
 			alert("Game Over, sua pontuação foi de " + count);
 			window.location.reload();
-		}, 11);
+		}, 1000);
 	}
 }, 10);
