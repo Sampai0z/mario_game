@@ -66,25 +66,15 @@ let ul2 = document.getElementById("list-score");
 const checkGameOver = setInterval(() => {
 	if (gameOver) {
 		console.log("Game over!"); // Faça algo quando o jogo acabar
-
 		scoreBoard.classList.remove("disable");
 		clearInterval(checkGameOver);
 		clearInterval(count);
 
 		console.log(count);
 
-		for (const element of names) {
-			const li = document.createElement("li");
-			li.appendChild(document.createTextNode(element));
-			ul.appendChild(li);
-
-			const li2 = document.createElement("li");
-			li2.appendChild(document.createTextNode(pontuacao));
-			ul2.appendChild(li2);
-		}
 		setTimeout(() => {
 			alert("Game Over, sua pontuação foi de " + count);
 			window.location.reload();
-		}, 5);
+		}, 11);
 	}
 }, 10);
