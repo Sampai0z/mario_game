@@ -66,6 +66,7 @@ let ul2 = document.getElementById("list-score");
 const checkGameOver = setInterval(() => {
 	if (gameOver) {
 		console.log("Game over!"); // Faça algo quando o jogo acabar
+
 		scoreBoard.classList.remove("disable");
 		clearInterval(checkGameOver);
 		clearInterval(count);
@@ -81,5 +82,9 @@ const checkGameOver = setInterval(() => {
 			li2.appendChild(document.createTextNode(pontuacao));
 			ul2.appendChild(li2);
 		}
+		setTimeout(() => {
+			alert("Game Over, sua pontuação foi de " + count);
+			window.location.reload();
+		}, 5);
 	}
 }, 10);
