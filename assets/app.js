@@ -1,10 +1,10 @@
 const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
 const clouds = document.querySelector(".clouds");
-
 const score = document.getElementById("score");
 
 let count = 0;
+const scores = [];
 let stop = false;
 
 const jump = () => {
@@ -14,9 +14,6 @@ const jump = () => {
 		mario.classList.remove("jump");
 	}, 500);
 };
-const fast = () => {
-	pipe.classList.add("jump 2s");
-};
 
 const scoreInterval = () => {
 	count++;
@@ -24,6 +21,7 @@ const scoreInterval = () => {
 };
 
 const time = setInterval(scoreInterval, 100);
+let gameOver = false;
 
 const loop = setInterval(() => {
 	const pipePosition = pipe.offsetLeft;
@@ -50,7 +48,38 @@ const loop = setInterval(() => {
 
 		clearInterval(loop);
 		clearInterval(time);
+
+		gameOver = true;
 	}
 }, 10);
 
 addEventListener("keydown", jump);
+
+const scoreBoard = document.getElementById("score-board");
+
+const storedNames = JSON.parse(localStorage.getItem("Jogadores")) || [];
+const names = [...storedNames];
+
+let ul = document.getElementById("list-name");
+let ul2 = document.getElementById("list-score");
+
+const checkGameOver = setInterval(() => {
+	if (gameOver) {
+		console.log("Game over!"); // Faça algo quando o jogo acabar
+		scoreBoard.classList.remove("disable");
+		clearInterval(checkGameOver);
+		clearInterval(count);
+
+		console.log(count);
+
+		for (const element of names) {
+			const li = document.createElement("li");
+			li.appendChild(document.createTextNode(element));
+			ul.appendChild(li);
+
+			const li2 = document.createElement("li");
+			li2.appendChild(document.createTextNode(pontuacao));
+			ul2.appendChild(li2);
+		}
+	}
+}, 10);
